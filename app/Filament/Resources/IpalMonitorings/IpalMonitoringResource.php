@@ -50,9 +50,9 @@ class IpalMonitoringResource extends Resource
     {
         return [
             'index' => ListIpalMonitorings::route('/'),
-            'create' => CreateIpalMonitoring::route('/create'),
-            'view' => ViewIpalMonitoring::route('/{record}'),
-            'edit' => EditIpalMonitoring::route('/{record}/edit'),
+            // 'create' => CreateIpalMonitoring::route('/create'),
+            // 'view' => ViewIpalMonitoring::route('/{record}'),
+            // 'edit' => EditIpalMonitoring::route('/{record}/edit'),
         ];
     }
 }

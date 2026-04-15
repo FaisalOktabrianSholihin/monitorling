@@ -15,40 +15,78 @@ class IpalMonitoringsTable
     {
         return $table
             ->columns([
+                // TextColumn::make('tanggal')
+                //     ->date()
+                //     ->sortable(),
+                // TextColumn::make('ph_inlet')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('ph_outlet')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('status_ph')
+                //     ->searchable(),
+                // TextColumn::make('suhu')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('debit_pagi')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('debit_sore')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('total_debit')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('warna')
+                //     ->searchable(),
+                // TextColumn::make('bau')
+                //     ->searchable(),
+                // TextColumn::make('bahan_kimia')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('tanggal')
-                    ->date()
-                    ->sortable(),
+                    ->label('Tanggal')
+                    ->date('d/m/Y')
+                    ->sortable()
+                    ->searchable(),
+
                 TextColumn::make('ph_inlet')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('pH Inlet')
+                    ->numeric(2),
+
                 TextColumn::make('ph_outlet')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('pH Outlet')
+                    ->numeric(2),
+
                 TextColumn::make('status_ph')
-                    ->searchable(),
+                    ->label('Status')
+                    ->badge() // Membuat tampilannya seperti label warna-warni
+                    ->color(fn(string $state): string => match ($state) {
+                        'Normal' => 'success',
+                        'Rendah' => 'danger',
+                        'Tinggi' => 'warning',
+                        default => 'gray',
+                    }),
+
                 TextColumn::make('suhu')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('debit_pagi')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('debit_sore')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Suhu (°C)')
+                    ->numeric(2),
+
                 TextColumn::make('total_debit')
-                    ->numeric()
+                    ->label('Total Debit (m³)')
+                    ->numeric(2)
                     ->sortable(),
-                TextColumn::make('warna')
-                    ->searchable(),
-                TextColumn::make('bau')
-                    ->searchable(),
+
                 TextColumn::make('bahan_kimia')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Bahan Kimia (kg)')
+                    ->numeric(2),
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()

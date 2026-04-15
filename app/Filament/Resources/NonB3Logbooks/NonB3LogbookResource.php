@@ -50,9 +50,9 @@ class NonB3LogbookResource extends Resource
     {
         return [
             'index' => ListNonB3Logbooks::route('/'),
-            'create' => CreateNonB3Logbook::route('/create'),
-            'view' => ViewNonB3Logbook::route('/{record}'),
-            'edit' => EditNonB3Logbook::route('/{record}/edit'),
+            // 'create' => CreateNonB3Logbook::route('/create'),
+            // 'view' => ViewNonB3Logbook::route('/{record}'),
+            // 'edit' => EditNonB3Logbook::route('/{record}/edit'),
         ];
     }
 }
