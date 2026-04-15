@@ -20,9 +20,17 @@ class IpalMonitoringResource extends Resource
 {
     protected static ?string $model = IpalMonitoring::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chart-bar';
 
-    protected static ?string $recordTitleAttribute = 'IpalMonitoring';
+    // protected static ?string $recordTitleAttribute = 'IpalMonitoring';
+
+    protected static ?string $recordTitleAttribute = 'Monitoring IPAL';
+
+    protected static ?string $navigationLabel = 'Monitoring IPAL';
+
+    protected static ?string $modelLabel = 'Monitoring IPAL';
+
+    protected static ?string $pluralModelLabel = 'Monitoring IPAL';
 
     public static function form(Schema $schema): Schema
     {

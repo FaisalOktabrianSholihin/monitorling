@@ -20,9 +20,17 @@ class NonB3LogbookResource extends Resource
 {
     protected static ?string $model = NonB3Logbook::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
 
-    protected static ?string $recordTitleAttribute = 'NonB3Logbook';
+    // protected static ?string $recordTitleAttribute = 'NonB3Logbook';
+
+    protected static ?string $recordTitleAttribute = 'Logbook Limbah NON-B3';
+
+    protected static ?string $navigationLabel = 'Logbook Limbah NON-B3';
+
+    protected static ?string $modelLabel = 'Logbook Limbah NON-B3';
+
+    protected static ?string $pluralModelLabel = 'Logbook Limbah NON-B3';
 
     public static function form(Schema $schema): Schema
     {

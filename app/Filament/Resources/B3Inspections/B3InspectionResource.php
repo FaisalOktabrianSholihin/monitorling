@@ -20,9 +20,17 @@ class B3InspectionResource extends Resource
 {
     protected static ?string $model = B3Inspection::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-check';
 
-    protected static ?string $recordTitleAttribute = 'B3Inspection';
+    // protected static ?string $recordTitleAttribute = 'B3Inspection';
+
+    protected static ?string $recordTitleAttribute = 'Checklist Cemaran B3';
+
+    protected static ?string $navigationLabel = 'Checklist Cemaran B3';
+
+    protected static ?string $modelLabel = 'Checklist Cemaran B3';
+
+    protected static ?string $pluralModelLabel = 'Checklist Cemaran B3';
 
     public static function form(Schema $schema): Schema
     {

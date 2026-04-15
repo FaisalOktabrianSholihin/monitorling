@@ -20,9 +20,17 @@ class B3LogbookResource extends Resource
 {
     protected static ?string $model = B3Logbook::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-exclamation-triangle';
 
-    protected static ?string $recordTitleAttribute = 'B3Logbook';
+    // protected static ?string $recordTitleAttribute = 'B3Logbook';
+
+    protected static ?string $recordTitleAttribute = 'Logbook Limbah B3';
+
+    protected static ?string $navigationLabel = 'Logbook Limbah B3';
+
+    protected static ?string $modelLabel = 'Logbook Limbah B3';
+
+    protected static ?string $pluralModelLabel = 'Logbook Limbah B3';
 
     public static function form(Schema $schema): Schema
     {
