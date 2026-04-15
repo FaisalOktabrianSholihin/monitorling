@@ -16,20 +16,30 @@ class B3InspectionsTable
         return $table
             ->columns([
                 TextColumn::make('tanggal')
-                    ->date()
-                    ->sortable(),
+                    ->label('Tanggal')
+                    ->date('d/m/Y')
+                    ->sortable()
+                    ->searchable(),
+
                 TextColumn::make('petugas')
+                    ->label('Petugas')
                     ->searchable(),
+
                 TextColumn::make('shift')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Shift')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'Pagi' => 'info',
+                        'Siang' => 'warning',
+                        'Malam' => 'gray',
+                        default => 'gray',
+                    }),
+
+                // Menghitung jumlah temuan dari tabel detail
+                TextColumn::make('items_count')
+                    ->counts('items')
+                    ->label('Jumlah Temuan')
+                    ->badge(),
             ])
             ->filters([
                 //

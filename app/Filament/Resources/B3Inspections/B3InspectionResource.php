@@ -50,9 +50,9 @@ class B3InspectionResource extends Resource
     {
         return [
             'index' => ListB3Inspections::route('/'),
-            'create' => CreateB3Inspection::route('/create'),
-            'view' => ViewB3Inspection::route('/{record}'),
-            'edit' => EditB3Inspection::route('/{record}/edit'),
+            // 'create' => CreateB3Inspection::route('/create'),
+            // 'view' => ViewB3Inspection::route('/{record}'),
+            // 'edit' => EditB3Inspection::route('/{record}/edit'),
         ];
     }
 }
