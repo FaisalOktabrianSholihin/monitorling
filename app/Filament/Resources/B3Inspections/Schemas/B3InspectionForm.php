@@ -32,8 +32,16 @@ class B3InspectionForm
                             ->required()
                             ->default(now()),
 
+                        // TextInput::make('petugas')
+                        //     ->label('Petugas')
+                        //     ->required()
+                        //     ->maxLength(255),
+
                         TextInput::make('petugas')
                             ->label('Petugas')
+                            ->default(fn() => auth()->user()?->name) // Tarik nama user yang sedang login
+                            ->readOnly() // Tambahkan ini agar namanya dikunci dan tidak bisa diganti manual
+                            ->extraInputAttributes(['style' => 'background-color: #f3f4f6']) // Efek warna abu-abu (opsional)
                             ->required()
                             ->maxLength(255),
 
