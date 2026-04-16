@@ -58,9 +58,9 @@ class B3LogbookResource extends Resource
     {
         return [
             'index' => ListB3Logbooks::route('/'),
-            'create' => CreateB3Logbook::route('/create'),
-            'view' => ViewB3Logbook::route('/{record}'),
-            'edit' => EditB3Logbook::route('/{record}/edit'),
+            // 'create' => CreateB3Logbook::route('/create'),
+            // 'view' => ViewB3Logbook::route('/{record}'),
+            // 'edit' => EditB3Logbook::route('/{record}/edit'),
         ];
     }
 }
