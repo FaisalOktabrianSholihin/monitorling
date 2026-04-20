@@ -29,7 +29,7 @@ class B3InspectionForm
                             ->label('Petugas')
                             ->default(fn() => auth()->user()?->name) // Tarik nama user yang sedang login
                             ->readOnly() // Tambahkan ini agar namanya dikunci dan tidak bisa diganti manual
-                            ->extraInputAttributes(['style' => 'background-color: #f3f4f6']) // Efek warna abu-abu (opsional)
+                            ->extraInputAttributes([]) // Efek warna abu-abu (opsional)
                             ->required()
                             ->maxLength(255),
 
@@ -38,12 +38,12 @@ class B3InspectionForm
                             ->options([
                                 'Pagi' => 'Pagi',
                                 'Siang' => 'Siang',
-                                'Malam' => 'Malam',
+                                // 'Malam' => 'Malam',
                             ])
                             ->native(false)
                             ->required(),
                     ])->columns(2),
- 
+
                 Section::make('Detail Checklist Cemaran')
                     ->schema([
                         // Inilah komponen Repeater untuk tabel child
@@ -103,7 +103,7 @@ class B3InspectionForm
                             ->addActionLabel('Tambah Temuan Baru') // Teks tombol tambah
                             ->collapsible() // Bisa di-minimize/expand
                             ->itemLabel(fn(array $state): ?string => $state['area_zona'] ?? null), // Label di header repeater
-                    ])->columns(2),
+                    ]),
             ]);
     }
 }
