@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
+use Filament\Forms\Components\Radio;
 
 class B3LogbookForm
 {
@@ -48,7 +49,7 @@ class B3LogbookForm
                                 'Kemasan Bahan Kimia' => 'Kemasan Bahan Kimia',
                                 'Aki Bekas' => 'Aki Bekas',
                                 'Filter Bekas' => 'Filter Bekas',
-                                'Sludge IPAL' => 'Sludge IPAL',
+                                // 'Sludge IPAL' => 'Sludge IPAL',
                             ])
                             ->native(false)
                             ->required(),
@@ -96,6 +97,57 @@ class B3LogbookForm
                             ->label('Keterangan')
                             ->default(null)
                             ->columnSpanFull(),
+                    ])->columns(2),
+
+                Section::make('D. Checklist Fasilitas TPS B3')
+                    ->schema([
+                        Radio::make('tps_simbol')
+                            ->label('Simbol/Label B3 terpasang dengan benar')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(), // Membuat pilihan berjejer ke samping
+
+                        Radio::make('tps_palet')
+                            ->label('Palet tidak rusak dan bersih')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(),
+
+                        Radio::make('tps_spillkit')
+                            ->label('Spill kit tersedia dan lengkap')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(),
+
+                        Radio::make('tps_apar')
+                            ->label('APAR di TPS tersedia dan valid')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(),
+
+                        Radio::make('tps_lantai')
+                            ->label('Lantai TPS tidak bocor/retak')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(),
+
+                        Radio::make('tps_ventilasi')
+                            ->label('Ventilasi TPS berfungsi baik')
+                            ->options([
+                                'Baik' => 'Baik',
+                                'Rusak' => 'Rusak',
+                            ])
+                            ->inline(),
                     ])->columns(2),
             ]);
     }

@@ -10,20 +10,13 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Radio;
 
 class B3InspectionForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            // ->components([
-            //     DatePicker::make('tanggal')
-            //         ->required(),
-            //     TextInput::make('petugas')
-            //         ->required(),
-            //     TextInput::make('shift')
-            //         ->required(),
-            // ]);
             ->components([
                 Section::make('Informasi Inspeksi')
                     ->schema([
@@ -31,11 +24,6 @@ class B3InspectionForm
                             ->label('Tanggal')
                             ->required()
                             ->default(now()),
-
-                        // TextInput::make('petugas')
-                        //     ->label('Petugas')
-                        //     ->required()
-                        //     ->maxLength(255),
 
                         TextInput::make('petugas')
                             ->label('Petugas')
@@ -54,8 +42,8 @@ class B3InspectionForm
                             ])
                             ->native(false)
                             ->required(),
-                    ])->columns(3),
-
+                    ])->columns(2),
+ 
                 Section::make('Detail Checklist Cemaran')
                     ->schema([
                         // Inilah komponen Repeater untuk tabel child
@@ -115,7 +103,7 @@ class B3InspectionForm
                             ->addActionLabel('Tambah Temuan Baru') // Teks tombol tambah
                             ->collapsible() // Bisa di-minimize/expand
                             ->itemLabel(fn(array $state): ?string => $state['area_zona'] ?? null), // Label di header repeater
-                    ]),
+                    ])->columns(2),
             ]);
     }
 }
