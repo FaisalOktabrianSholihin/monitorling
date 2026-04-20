@@ -20,6 +20,7 @@ class IpalMonitoringForm
                 DatePicker::make('tanggal')
                     ->label('Tanggal')
                     ->required()
+                    ->readOnly()
                     ->default(now())
                     ->columnSpanFull(),
 
@@ -56,7 +57,7 @@ class IpalMonitoringForm
                             ->label('Status pH')
                             ->default(null)
                             ->readOnly()
-                            ->extraInputAttributes(['style' => 'background-color: #f3f4f6']),
+                            ->extraInputAttributes([]),
 
                         TextInput::make('suhu')
                             ->label('Suhu (°C)')
@@ -86,7 +87,7 @@ class IpalMonitoringForm
                             ->numeric()
                             ->default(null)
                             ->readOnly()
-                            ->extraInputAttributes(['style' => 'background-color: #f3f4f6; font-weight: bold;']),
+                            ->extraInputAttributes([]),
                     ])->columns(3),
 
                 Section::make('Fisik, Kimia & Catatan')
@@ -108,7 +109,7 @@ class IpalMonitoringForm
                             ->options([
                                 'Tidak Berbau' => 'Tidak Berbau',
                                 'Berbau' => 'Berbau',
-                                'Busuk' => 'Busuk',
+                                // 'Busuk' => 'Busuk',
                             ])
                             ->native(false)
                             ->default(null),
