@@ -10,7 +10,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Radio;
 
 class B3InspectionForm
 {
@@ -33,6 +32,15 @@ class B3InspectionForm
                             ->required()
                             ->maxLength(255),
 
+                        // Select::make('shift')
+                        //     ->label('Shift')
+                        //     ->options([
+                        //         'Pagi' => 'Pagi',
+                        //         'Siang' => 'Siang',
+                        //         // 'Malam' => 'Malam',
+                        //     ])
+                        //     ->native(false)
+                        //     ->required(),
                         Select::make('shift')
                             ->label('Shift')
                             ->options([
@@ -41,8 +49,22 @@ class B3InspectionForm
                                 // 'Malam' => 'Malam',
                             ])
                             ->native(false)
-                            ->required(),
-                    ])->columns(2),
+                            ->required()
+                            ->default(function () {
+                                // Ambil jam saat ini dengan zona waktu WIB
+                                $jam = now()->timezone('Asia/Jakarta')->format('H');
+
+                                // Logika penentuan shift berdasarkan jam (format 24 jam)
+                                if ($jam >= 6 && $jam < 12) {
+                                    return 'Pagi';  // Jam 06:00 s/d 13:59
+                                } elseif ($jam >= 12 && $jam < 18) {
+                                    return 'Siang'; // Jam 14:00 s/d 21:59
+                                } else {
+                                    return 'Malam'; // Jam 22:00 s/d 05:59
+                                }
+                            }),
+                    ])->columns(2)
+                    ->columnSpanFull(),
 
                 Section::make('Detail Checklist Cemaran')
                     ->schema([
@@ -83,7 +105,8 @@ class B3InspectionForm
                                     ->image() // Hanya menerima file gambar
                                     ->directory('foto-cemaran-b3') // Folder penyimpanan di storage
                                     ->imageEditor() // Mengaktifkan fitur crop/edit bawaan Filament
-                                    ->columnSpanFull(),
+                                    ->columnSpanFull()
+                                    ->required(),
 
                                 Textarea::make('tindakan_segera')
                                     ->label('Tindakan Segera')
@@ -103,7 +126,7 @@ class B3InspectionForm
                             ->addActionLabel('Tambah Temuan Baru') // Teks tombol tambah
                             ->collapsible() // Bisa di-minimize/expand
                             ->itemLabel(fn(array $state): ?string => $state['area_zona'] ?? null), // Label di header repeater
-                    ]),
+                    ])->columnSpanFull(),
             ]);
     }
 }
