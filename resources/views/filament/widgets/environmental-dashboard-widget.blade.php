@@ -136,7 +136,7 @@
             <!-- Area Dropdown Filter -->
             <div class="env-filter-box">
                 <!-- Dropdown Bulan -->
-                <select wire:model.live="bulan" class="env-select">
+                <select wire:model.change="bulan" class="env-select">
                     <option value="01">Januari</option>
                     <option value="02">Februari</option>
                     <option value="03">Maret</option>
@@ -149,10 +149,10 @@
                     <option value="10">Oktober</option>
                     <option value="11">November</option>
                     <option value="12">Desember</option>
-                </select>
+                </select> 
 
                 <!-- Dropdown Tahun -->
-                <select wire:model.live="tahun" class="env-select">
+                <select wire:model.change="tahun" class="env-select">
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
                     <option value="2026">2026</option>
