@@ -49,9 +49,9 @@ class B3LogbookForm
                                 'Kemasan Bahan Kimia' => 'Kemasan Bahan Kimia',
                                 'Aki Bekas' => 'Aki Bekas',
                                 'Filter Bekas' => 'Filter Bekas',
-                                // 'Sludge IPAL' => 'Sludge IPAL',
                             ])
                             ->native(false)
+                            ->searchable()
                             ->required(),
 
                         Select::make('tipe_transaksi')

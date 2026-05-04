@@ -83,6 +83,7 @@ class B3InspectionForm
                                     ])
                                     ->native(false)
                                     ->required()
+                                    ->searchable()
                                     ->columnSpan(1),
 
                                 TextInput::make('parameter')

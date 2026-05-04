@@ -102,6 +102,7 @@ class IpalMonitoringForm
                                 'Hijau' => 'Hijau',
                             ])
                             ->native(false) // Membuat tampilan dropdown lebih modern
+                            ->searchable()
                             ->default(null),
 
                         Select::make('bau') // Diubah ke Select
@@ -112,6 +113,7 @@ class IpalMonitoringForm
                                 // 'Busuk' => 'Busuk',
                             ])
                             ->native(false)
+                            ->searchable()
                             ->default(null),
 
                         TextInput::make('bahan_kimia')
